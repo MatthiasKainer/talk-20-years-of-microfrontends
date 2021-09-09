@@ -1,0 +1,949 @@
+<html>
+  <head>
+    <title>20 years of microfrontends</title>
+    <script
+      type="module"
+      src="https://unpkg.com/html-presentations@1.0.7?module"
+    ></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <presentation-body>
+      <presentation-slide first>
+        <h1 class="pushToMiddle">20 years of microfrontends</h1>
+      </presentation-slide>
+      <presentation-slide>
+        <div class="profile">
+          <img class="round" src="images/mkainer.jpg" alt="Matthias Kainer" />
+          <h5>Matthias Kainer</h5>
+          <h6>Thoughtworks</h6>
+          <div class="info">
+            <div>
+              <div class="title">
+                <span class="icon-font">
+                  <svg class="icon">
+                    <use xlink:href="#icon-twitter"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="txt">@MatKainer</div>
+            </div>
+
+            <div>
+              <div class="title">
+                <span class="icon-font">
+                  <svg class="icon">
+                    <use xlink:href="#icon-github"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="txt">MatthiasKainer</div>
+            </div>
+
+            <div>
+              <div class="title">
+                <span class="icon-font">
+                  <svg class="icon">
+                    <use xlink:href="#icon-linkedin"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="txt">matthiaskainer</div>
+            </div>
+
+            <div>
+              <div class="title">
+                <span class="icon-font">
+                  <svg class="icon">
+                    <use xlink:href="#icon-link"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="txt">matthias-kainer.de</div>
+            </div>
+          </div>
+        </div>
+      </presentation-slide>
+      <presentation-slide>
+        <h2>Term Definition</h2>
+        <block-lessons id="definition-1">
+          <block-lesson>
+            <block-code lang="plain">
+              ┌──────────────────┐
+              │                  │
+              │                  │
+              │                  │
+              │                  │
+              │                  │
+              │                  │
+              │                  │
+              │   Shop Team      │
+              │                  │
+              │                  │
+              │                  │
+              │                  │
+              │                  │
+              │                  │
+              │                  │
+              │                  │
+              │                  │
+              └──────────────────┘
+          </block-code>
+        </block-lesson>
+        <block-lesson appearOnClick="1">
+          <block-code lang="plain">
+      ┌────────────────────────────────────┐
+      │                                    │
+      │                                    │
+      │           Frontend Team            │
+      │                                    │
+      │                                    │
+      ├──────────┬─┬──────────┬─┬──────────┤
+      ├──────────┤ ├──────────┤ ├──────────┤
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │ Customer │ │ Product  │ │ Checkout │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      └──────────┘ └──────────┘ └──────────┘
+            </block-code>
+          </block-lesson>
+        <block-lesson appearOnClick="2">
+          <block-code lang="plain">
+      ┌──────────┐ ┌──────────┐ ┌──────────┐
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │ Customer │ │ Product  │ │ Checkout │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      │          │ │          │ │          │
+      └──────────┘ └──────────┘ └──────────┘
+            </block-code>
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide>
+        <h2>Term Definition</h2>
+        <h3 class="pushToMiddle">
+          Microfrontends are client applications that can be developed and delivered <strong>independently</strong> by different teams
+          and are composed on a page as late as possible.
+        </h3>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2>Background, or who am I to talk about that?</h2>
+        <block-lessons id="background-1">
+        <block-lesson appearOnClick="1">
+          <h3>Professional</h3>
+          <h4>webhosting infrastructure (millions of servers), automotive, retail, legacy modernization in backend/infrastructure</h4>
+        </block-lesson>
+        <!-- And optionally have the block-lesson appear after a specified number of clicks -->
+        <block-lesson appearOnClick="2">
+          <h3 class="lesson">Hobbies</h3>
+          <h4 class="lesson">IoT, Home automation, 3D Printer</h4>
+        </block-lesson>
+        <block-lesson appearOnClick="3">
+          <h3 class="lesson">Frontend</h3>
+          <h4 class="lesson">Private website, Server Side Frameworks, some contact points with react/angular/web components</h4>
+        </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2>My Frontend Origins</h2>
+        <block-lessons id="lesson-1">
+            <block-lesson>
+                <block-code lang="markup">
+&lt;!DOCTYPE HTML 
+PUBLIC "-//W3C//DTD HTML 4.01 Frameset//EN"
+"http://www.w3.org/TR/html4/frameset.dtd">
+&lt;HTML>
+    &lt;HEAD>
+        &lt;TITLE>Matthias on the WWW&lt;/TITLE>
+    &lt;/HEAD>
+    &lt;FRAMESET rows="10%, 80%, 10%">
+        &lt;FRAME src="/header/">
+        &lt;FRAMESET cols="20%, 80%">
+            &lt;FRAME src="/nav/">
+            &lt;FRAME src="/">
+        &lt;/FRAMESET>
+        &lt;FRAME src="/footer/">
+    &lt;/FRAMESET>
+&lt;/HTML>
+                </block-code>
+            </block-lesson>
+            <block-lesson>
+                <block-code lang="plain">
+ ---------------------------------------
+|                                       |
+|            header/                    |
+|                                       |
+ ---------------------------------------
+|         |                             |
+|         |                             |
+|         |                             |
+|  Nav/   |          Content            |
+|         |                             |
+|         |                             |
+|         |                             |
+|         |                             |
+|         |                             |
+ ---------------------------------------
+|                                       |
+|             Footer/                   |
+|                                       |
+ ---------------------------------------
+                </block-code>
+            </block-lesson>
+            <block-lesson>
+              <div style="margin: 0 auto;">
+                <div>
+                  <iframe src="example1/header.html" style="width:100%;height:60px;"></iframe>
+                </div>
+                <div style="display: flex;">
+                  <div style="flex: 20%; border: inset;height:160px;">
+                    <ul>
+                        <li><a href="example1/home.html" target="main_frame">Home</a></li>
+                        <li><a href="example1/about.html" target="main_frame">About</a></li>
+                        <li><a href="example1/contact.html" target="main_frame">Contact</a></li>
+                        <li><a href="example1/broken.html" target="main_frame">Page not found</a></li>
+                    </ul>
+                  </div>
+                  <div style="flex: 80%; height:160px;">
+                    <iframe src="example1/home.html" name="main_frame" style="width:100%;height:160px;"></iframe>
+                  </div>
+                </div>
+                <div>
+                  <iframe src="example1/footer.html" style="width:100%;height:60px;"></iframe>
+                </div>
+              </div>
+            </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2>My Frontend Origins</h2>
+        <block-code lang="markup">
+<!-- /product/index.html -->
+<form action="/shoppingcart/add_to_cart" method="PUT" target="frame_of_the_shopping_cart">
+  <input type="hidden" name="productId" value="123">
+  <input type="submit" value="Add to shopping cart">
+</form>
+        </block-code>
+        <block-lessons id="frame-put-1">
+          <block-lesson class="block-small" appearOnClick="1">
+            <h3 class="lesson">Good</h3>
+            <h4 class="lesson">Small, independent pieces, hosted independently</h4>
+          </block-lesson>
+          <block-lesson class="block-small" appearOnClick="2">
+            <h3 class="lesson">Learnings</h3>
+            <h4 class="lesson">Don't form-(post/put) too much crossframe because slow and brittle</h4>
+          </block-lesson>
+          <block-lesson class="block-small" appearOnClick="3">
+            <h3 class="lesson">Bad</h3>
+            <h4 class="lesson">Not responsive, no seo</h4>
+          </block-lesson>
+          <block-lesson class="block-small" appearOnClick="4">
+            <h3 class="lesson">Ugly</h3>
+            <h4 class="lesson">Megainsecure</h4>
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2>iFrame heritage</h2>
+        <block-lessons id="iframe-1">
+          <block-lesson class="block-half">
+            <block-code lang="markup">
+&lt;body>
+  &lt;nav>
+    &lt;a href="/">Home&lt;/a> | &lt;a href="/product">Products&lt;/a>
+  &lt;/nav>
+  &lt;iframe name="container" id="micro-frontend-container">&lt;/iframe>
+
+  &lt;script type="text/javascript">
+    const {search, pathname} = window.location;
+    const microFrontendsByRoute = {
+      '/': '/parts/search' + search,
+      '/product': '/parts/product' + search
+    };
+    const container = document.getElementById('micro-frontend-container');
+    container.src = microFrontendsByRoute[pathname];
+    [...document.querySelectorAll("nav a")].forEach(element => 
+      element.addEventListener("click", (e) => 
+        container.src = microFrontendsByRoute[element.pathname], e.preventDefault(), false
+      )
+    )
+  &lt;/script>
+&lt;/body>
+            </block-code>
+          </block-lesson>
+          <block-lesson class="block-half">
+            <nav id="frame-example-nav">
+              <a href="/">Home</a> | <a href="/product">Products</a>
+            </nav>
+            <iframe name="container" id="iframe-example-micro-frontend-container" src="example1/home.html"></iframe>
+            <script type="text/javascript">
+              const container = document.getElementById('iframe-example-micro-frontend-container');
+              const microFrontendsByRoute = {
+                '/': 'example1/home.html',
+                '/product': 'example1/product.html'
+              };
+              [...document.querySelectorAll("#frame-example-nav a")].forEach(element => 
+                element.addEventListener("click", (e) => {
+                  container.src = microFrontendsByRoute[element.pathname];
+                  e.preventDefault(); 
+                  return false
+                })
+              )
+            </script>
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2>iFrame Messaging</h2>
+
+        <block-lessons id="iframe-1">
+          <block-lesson class="block-full">
+            <block-code lang="javascript">
+  // index.ts
+  const allowedSenders = [
+    window.frames["content"].contentWindow,
+    window.frames["shopping-cart"].contentWindow,
+  ];
+  window.addEventListener("message", (evt) => {
+    if (allowedSenders.some(sender => sender === evt.source) 
+      && evt.origin === "https://example.com") {
+      window.frames[evt.data.target]?.contentWindow.postMessage(evt.data)
+    } else {
+      console.log("not trusted")
+    }
+  }, false);
+  // /parts/product.ts
+  window.parent.postMessage({ body: { productId: "123" }, action: "add", target: "shopping-cart" })
+  // /parts/shopping-cart.ts
+  window.addEventListener("message", (evt) => {
+    if (validEvent(evt)) {
+        if (evt.data?.action === "add") {
+          fetch("/api/shopping-cart", { method: 'PUT' }, body: JSON.stringify(evt.data?.body))
+          // do more, like display the number of items in the cart
+        }
+    }
+  })
+            </block-code>
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2 class="pushToMiddle">Era of the monolithic backends</h2>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2>Server Side Includes</h2>
+
+        <block-lessons id="ssi-1">
+          <block-lesson>
+            <block-code lang="markup">
+# index.php
+<?php include 'header.html';?>
+<?php include 'body.html';?>
+<?php include 'footer.html';?>
+            </block-code>
+          </block-lesson>
+          <block-lesson>
+            <block-code lang="markup">
+' index.asp
+<!-- #include file="header.html" -->
+<!-- #include virtual="/lib/body.html" -->
+<!-- #include file="footer.html" -->
+            </block-code>
+          </block-lesson>
+          <block-lesson>
+            <block-code lang="markup">
+<%@ include file="header.html" %>
+<%@ include file="body.html" %>
+<%@ include file="footer.html" %>
+            </block-code>
+          </block-lesson>
+        </block-lessons>
+        <block-code lang="plain">
+                                                                                  ┌─server─────────────────────────┐
+                                                                                  │                                │
+                                                                                  │               ┌─────────────┐  │
+                                                                                  │             ┌─► header.html │  │
+                                                                                  │ ┌─────────┐ │ └─────────────┘  │
+                                                          ┌────────────┐          │ │         │ │                  │
+                                                          │            │          │ │         │ │ ┌─────────────┐  │
+                                                          │  visitor   ├──────────┼─► app     ├─┼─► body.html   │  │
+                                                          │            │          │ │         │ │ └─────────────┘  │
+                                                          └────────────┘          │ │         │ │                  │
+                                                                                  │ └─────────┘ │ ┌─────────────┐  │
+                                                                                  │             └─► footer.html │  │
+                                                                                  │               └─────────────┘  │
+                                                                                  │                                │
+                                                                                  └────────────────────────────────┘
+        </block-code>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2>Server Side Includes in Microservices</h2>
+
+        <block-lessons id="ssi-2">
+          <block-lesson class="block-half">
+            <block-code lang="markup">
+&lt;html>
+  &lt;head>
+    &lt;title>My Website - Product Detail&lt;/title> 
+    &lt;esi:include src="http://example.com/fragment/shared_styles" /> 
+  &lt;/head>
+  &lt;body> 
+    &lt;header>
+      &lt;esi:include src="http://checkout.example.com/fragment/navigation" /> 
+      &lt;esi:include src="http://checkout.example.com/fragment/shopping_cart" /> 
+    &lt;/header>
+    &lt;main>
+      &lt;esi:include src="http://product.example.com/fragment/product_page" /> 
+    &lt;/main>
+  &lt;/body> 
+&lt;/html>
+            </block-code>
+          </block-lesson>
+          <block-lesson class="block-half">
+            <block-code lang="plain">
+                 ┌─server──────┐    ┌─shared───┐
+                 │             │    │          │
+                 │             │ ┌──►          │
+                 │             │ │  │          │
+                 │             │ │  └──────────┘
+                 │ ┌─────────┐ │ │
+┌────────────┐   │ │         │ │ │  ┌─service──┐
+│            │   │ │         │ │ │  │          │
+│  visitor   ├───┼─► edge gw ├─┼─┼──►          │
+│            │   │ │         │ │ │  │          │
+└────────────┘   │ │         │ │ │  └──────────┘
+                 │ └─────────┘ │ │
+                 │             │ │  ┌─service──┐
+                 │             │ │  │          │
+                 │             │ └──►          │
+                 │             │    │          │
+                 └─────────────┘    └──────────┘           
+            </block-code> 
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2>Ancient Independent, Modular Microfrontends?</h2>
+        <block-lessons id="ads-1">
+          <block-lesson class="block-full" appearOnClick="1">
+            <img class="large-image" src="images/ads-everywhere.jpeg" alt="Ads are everywhere, for a long time" />
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2>The struggles of an ad-developer</h2>
+        <block-lessons id="ads-2">
+          <block-lesson appearOnClick="1">
+            <h4>Loaded from a different network, but best has access to the content</h4>
+          </block-lesson>
+          <block-lesson appearOnClick="2">
+            <h4>Be fast, and don't break the styles on the page</h4>
+          </block-lesson>
+          <block-lesson appearOnClick="3">
+            <h4>Also don't break anything else</h4>
+          </block-lesson>
+          <block-lesson appearOnClick="4">
+            <h4><strong>iFrames</strong></h4>
+          </block-lesson>
+          <block-lesson appearOnClick="4">
+            <h4><strong>Widgets</strong></h4>
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2>Widgets</h2>
+        <iframe src="https://stackblitz.com/edit/js-24jbbk?embed=1&file=index.html&hideExplorer=1&hideNavigation=1&view=both" 
+          width="100%" 
+          style="height:70vh;"
+          allowfullscreen="allowfullscreen" 
+          frameborder="0">
+        </iframe>
+      </presentation-slide>
+      <presentation-slide> 
+        <h2>Widgets - Pro/Cons</h2>
+        <block-lessons id="wdigets-1">
+          <block-lesson appearOnClick="1">
+            <h4>Easy to share, decent encapsulation of functionality</h4>
+          </block-lesson>
+          <block-lesson appearOnClick="2">
+            <h4>Can be deployed to a cdn independently</h4>
+          </block-lesson>
+          <block-lesson appearOnClick="3">
+            <h4></h4>
+          </block-lesson>
+          <block-lesson appearOnClick="3">
+            <h4></h4>
+          </block-lesson>
+          <block-lesson appearOnClick="3">
+            <h4><strong>No clear style encapsulation, no maintainable state management</strong></h4>
+          </block-lesson>
+          <block-lesson appearOnClick="4">
+            <h4><strong>Didn't fit well into the dawn of monolithic frontend frameworks like angular and react</strong></h4>
+          </block-lesson>
+          <block-lesson appearOnClick="5">
+            <h4>Has a great descendant called <strong>web components</strong></h4>
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide>
+        <h2>SPA's and Framework components</h2>
+        <block-lessons id="frameworks-1">
+          <block-lesson appearOnClick="1">
+            <h4>Do support modularization</h4>
+          </block-lesson>
+          <block-lesson appearOnClick="2">
+            <h4></h4>
+          </block-lesson>
+          <block-lesson appearOnClick="2">
+            <h4><strong>Web Applications lack the infrastructure to provide the same comfort for data/state management as microservices</strong></h4>
+          </block-lesson>
+          <block-lesson appearOnClick="3" class="block-full">
+            <h2>It is easiest to maintain a single application with a shared, global state</h2>
+          </block-lesson>
+      </presentation-slide>
+      <presentation-slide>
+        <h2>Framework components - React Example</h2>
+        <iframe src="https://stackblitz.com/edit/react-ts-wevvui?embed=1&file=index.tsx&hideExplorer=1&hideNavigation=1&view=editor" 
+          width="100%" 
+          style="height:70vh;"
+          allowfullscreen="allowfullscreen" 
+          frameborder="0">
+        </iframe>
+      </presentation-slide>
+      <presentation-slide>
+        <h2 class="pushToMiddle">Monorepo</h2>
+      </presentation-slide>
+      <presentation-slide>
+        <h2>Monorepo - Workspaces</h2>
+
+        <block-lessons id="monorepo-workspaces-1">
+          <block-lesson class="block-half">
+            <block-code lang="plain">
+.
+├── my-website
+│   └── package.json
+├── package.json ------------------------------------------------►
+└── packages
+    ├── detail-page
+    │   └── package.json------------------------------+
+    └── shopping-cart                                 │
+        └── package.json -------+                     │
+                                │                     │
+                                │                     +----------►
+                                │
+                                ▼</block-code>
+            <block-code lang="javascript">
+// shopping-cart/package.json
+{
+  "name": "shop/shopping-cart"
+}
+            </block-code>
+          </block-lesson>
+          <block-lesson class="block-half">
+            <block-code lang="javascript">
+// package.json
+{
+  "private": true,
+  "workspaces": ["my-website", "packages/*"]
+}
+            </block-code>
+            <block-code lang="javascript">
+// detail-page/package.json
+{
+  "name": "shop/detail-page"
+  "dependencies": {
+    "shop/shopping-cart": "*"
+  }
+}
+            </block-code>
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide>
+        <h2>Atomic-Design</h2>
+        <block-lessons id="atomic-design-1">
+          <block-lesson appearOnClick="1">
+            <h3>Atoms</h3>
+            <table>
+              <tr>
+                <td><label>Search the site</label></td>
+                <td><silent>Label</silent></td>
+              </tr>
+              <tr>
+                <td><input type="text" placeholder="Keywords"></td>
+                <td><silent>Input</silent></td>
+              </tr>
+              <tr>
+                <td><button>Search</button></td>
+                <td><silent>Button</silent></td>
+              </tr>
+            </table>
+          </block-lesson>
+          <block-lesson appearOnClick="2">
+            <h3>Molecules</h3>
+            <div>
+              <label>Search the site</label><br>
+              <input type="text" placeholder="Keywords"> <button>Search</button>
+            </div>
+          </block-lesson>
+          <block-lesson appearOnClick="3">
+            <h3>Organisms</h3>
+            <div>
+              <label>Search the site</label><br>
+              <input type="text" placeholder="Keywords" value="great"> <button>Search</button>
+            </div>
+            <div class="products">
+              <div class="product">
+                <img src="https://picsum.photos/seed/1/200" alt="Avatar" style="width:100%">
+                <div class="container">
+                  <h4><b>Great Product</b></h4>
+                </div>
+              </div>
+              <div class="product">
+                <img src="https://picsum.photos/seed/2/200" alt="Avatar" style="width:100%">
+                <div class="container">
+                  <h4><b>Great Product</b></h4>
+                </div>
+              </div>
+              <div class="product">
+                <img src="https://picsum.photos/seed/3/200" alt="Avatar" style="width:100%">
+                <div class="container">
+                  <h4><b>Great Product</b></h4>
+                </div>
+              </div>
+              <div class="product">
+                <img src="https://picsum.photos/seed/4/200" alt="Avatar" style="width:100%">
+                <div class="container">
+                  <h4><b>Great Product</b></h4>
+                </div>
+              </div>
+              <div class="product">
+                <img src="https://picsum.photos/seed/5/200" alt="Avatar" style="width:100%">
+                <div class="container">
+                  <h4><b>Great Product</b></h4>
+                </div>
+              </div>
+              <div class="product">
+                <img src="https://picsum.photos/seed/6/200" alt="Avatar" style="width:100%">
+                <div class="container">
+                  <h4><b>Great Product</b></h4>
+                </div>
+              </div>
+              <div class="product">
+                <img src="https://picsum.photos/seed/7/200" alt="Avatar" style="width:100%">
+                <div class="container">
+                  <h4><b>Great Product</b></h4>
+                </div>
+              </div>
+              <div class="product">
+                <img src="https://picsum.photos/seed/8/200" alt="Avatar" style="width:100%">
+                <div class="container">
+                  <h4><b>Great Product</b></h4>
+                </div>
+              </div>
+              <div class="product">
+                <img src="https://picsum.photos/seed/9/200" alt="Avatar" style="width:100%">
+                <div class="container">
+                  <h4><b>Great Product</b></h4>
+                </div>
+              </div>
+            </div>
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide>
+        <h2>Build- vs Run-Time Integration</h2>
+        <block-lessons id="build-vs-runtime">
+          <block-lesson appearOnClick="1" class="block-half">
+            <h3>Build-Time</h3>
+            <h4>Integration of bundles via Monorepo/Artifactory during the build (ie <code>npm install</code>) </h4>
+          </block-lesson>
+          <block-lesson appearOnClick="2" class="block-half">
+            <h3>Run-Time</h3>
+            <h4>Integration of bundles via Url during execution in the browser (ie via a CDN)</h4>
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide>
+        <h2>Import-Maps</h2>
+        <block-code lang="markup">
+          &lt;!DOCTYPE html>
+          &lt;html>
+          &lt;head>
+            &lt;title>Example Product Details Frame Using WebComponents&lt;/title>
+            &lt;script type="systemjs-importmap">
+            {
+              "imports": {
+                "lit": "https://cdn.jsdelivr.net/npm/lit@2.0.0-rc.2/lit.min.js",
+                "pure-lit": "https://cdn.jsdelivr.net/npm/pure-lit@1.0.3/dist/index.min.js",
+                "@my-website/shopping-cart": "https://cdn.example.com/shopping-cart.js",
+                "@my-website/menu": "https://cdn.example.com/navigation.js",
+                "@my-website/product": "https://cdn.example.com/product.js",
+              }
+            }
+            &lt;/script>
+          &lt;/head>
+
+          &lt;body>
+            &lt;menu-top>
+              &lt;shopping-cart slot="pull-right">&lt;/shopping-cart>
+            &lt;/menu-top>
+            &lt;product-detail>
+              &lt;shopping-cart-button-add slot="call-to-action">&lt;/shopping-cart-button-add>
+            &lt;/product-detail>
+            &lt;menu-footer>&lt;/menu-footer>
+          &lt;/body>
+          &lt;/html>
+        </block-code>
+      </presentation-slide>
+      <presentation-slide>
+        <h2>Module Federation</h2>
+        <block-lessons id="module-federation-1">
+          <block-lesson class="block-half">
+            <block-code lang="javascript">
+{
+  "name": "@my-website/product-team",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "moment": "^2.0.0"
+  }
+}
+            </block-code>
+            <block-code lang="javascript">
+module.exports = {
+  entry: "./src/index",
+  mode: "development",
+  // ...
+  plugins: [
+    new ModuleFederationPlugin({
+      name: "product-team",
+      // ...
+      shared: {
+        // adds moment as shared module
+        // version is inferred from package.json
+        // it will use the highest moment version that is >= 2 and < 3
+        moment: require("./package.json").dependencies.moment,
+      },
+    }),
+  ],
+};
+            </block-code>
+          </block-lesson>
+          <block-lesson appearOnClick="1" class="block-half">
+            <block-code lang="javascript">
+{
+  "name": "@my-website/shop-team",
+  "version": "0.0.0",
+  "private": true,
+  "dependencies": {
+    "moment": "2.9.0"
+  }
+}
+            </block-code>
+            <block-code lang="javascript">
+// 2.9.0
+expect(moment("", "DD-MM-YYYY").isBefore(moment("2021-01-01"))).toBeTrue()
+// 2.10.0
+expect(moment("", "DD-MM-YYYY").isBefore(moment("2021-01-01"))).toBeFalse()
+            </block-code>
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide>
+        <h2>Single-SPA</h2>
+        <h4 style="margin: 0; margin-top: -103px;">Multiframework composition</h4>
+        <block-lessons id="singlespa-1">
+          <block-lesson class="block-half">
+        <block-code lang="markup">
+<script type="systemjs-importmap">
+  {
+    "imports": {
+      "react": "https://cdn.jsdelivr.net/npm/react@16.12.0/umd/react.production.min.js",
+      "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.12.0/umd/react-dom.production.min.js",
+      "single-spa": "https://cdn.jsdelivr.net/npm/single-spa@4.4.1/lib/system/single-spa.min.js",
+      "@my-website/shopping-cart": "https://cdn.example.com/shopping-cart/js/index.js"
+    }
+  }
+</script>
+
+<script>
+  System.import("single-spa").then(function(singleSpa) {
+    singleSpa.registerApplication({
+      name: "@my-website/shopping-cart",
+      app: () => System.import("@my-website/shopping-cart"),
+      activeWhen: () => true,
+      customProps: {}
+    });
+    singleSpa.start();
+  });
+</script>
+            </block-code>
+          </block-lesson>
+          <block-lesson class="block-half">
+            <block-code lang="javascript" class="block-half">
+import {rootComponent} from './shoppingCart';
+
+const lifecycles = singleSpaReact({
+  React,
+  ReactDOM,
+  rootComponent
+})
+            </block-code>
+          </block-lesson>
+        </block-lessons>
+      </presentation-slide>
+      <presentation-slide>
+        <h2 class="pushToMiddle">Unsolved dependency management, lack of event based infrastructure in the browser, the case of the missing contract tests...</h2>
+      </presentation-slide>
+      <presentation-slide>
+        <img src="images/msn-2001.jpeg" alt="msn.de in the year 2001 had a few microfrontends already">
+        <h5>Not a lot of it is new, really - msn in 2001</h5>
+      </presentation-slide>
+      <!-- Annotate the last slide -->
+      <presentation-slide last>
+        <h1>Shouldn't we be further?</h1>
+        <div class="profile" style="zoom:0.5;">
+          <img class="round" src="images/mkainer.jpg" alt="Matthias Kainer" />
+          <h5>Matthias Kainer</h5>
+          <h6>Thoughtworks</h6>
+          <div class="info">
+            <div>
+              <div class="title">
+                <span class="icon-font">
+                  <svg class="icon">
+                    <use xlink:href="#icon-twitter"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="txt">@MatKainer</div>
+            </div>
+
+            <div>
+              <div class="title">
+                <span class="icon-font">
+                  <svg class="icon">
+                    <use xlink:href="#icon-github"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="txt">MatthiasKainer</div>
+            </div>
+
+            <div>
+              <div class="title">
+                <span class="icon-font">
+                  <svg class="icon">
+                    <use xlink:href="#icon-linkedin"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="txt">matthiaskainer</div>
+            </div>
+
+            <div>
+              <div class="title">
+                <span class="icon-font">
+                  <svg class="icon">
+                    <use xlink:href="#icon-link"></use>
+                  </svg>
+                </span>
+              </div>
+              <div class="txt">matthias-kainer.de</div>
+            </div>
+          </div>
+        </div>
+        <h5>Presentation made with <a href="https://github.com/MatthiasKainer/html-presentation/">github.com/MatthiasKainer/html-presentation</a></h5>
+      </presentation-slide>
+    </presentation-body>
+
+    <svg hidden="hidden">
+      <defs>
+        <symbol id="icon-github" viewBox="0 0 32 32">
+          <title>github</title>
+          <path
+            d="M16.192 0.512c-8.832 0-16 7.168-16 16 0 7.072 4.576 13.056 10.944 15.168 0.8 0.16 1.088-0.352 1.088-0.768 0-0.384 0-1.632-0.032-2.976-4.448 0.96-5.376-1.888-5.376-1.888-0.736-1.856-1.792-2.336-1.792-2.336-1.44-0.992 0.096-0.96 0.096-0.96 1.6 0.128 2.464 1.664 2.464 1.664 1.44 2.432 3.744 1.728 4.672 1.344 0.128-1.024 0.544-1.728 1.024-2.144-3.552-0.448-7.296-1.824-7.296-7.936 0-1.76 0.64-3.168 1.664-4.288-0.16-0.416-0.704-2.016 0.16-4.224 0 0 1.344-0.416 4.416 1.632 1.28-0.352 2.656-0.544 4-0.544s2.72 0.192 4 0.544c3.040-2.080 4.384-1.632 4.384-1.632 0.864 2.208 0.32 3.84 0.16 4.224 1.024 1.12 1.632 2.56 1.632 4.288 0 6.144-3.744 7.488-7.296 7.904 0.576 0.512 1.088 1.472 1.088 2.976 0 2.144-0.032 3.872-0.032 4.384 0 0.416 0.288 0.928 1.088 0.768 6.368-2.112 10.944-8.128 10.944-15.168 0-8.896-7.168-16.032-16-16.032z"
+          ></path>
+          <path
+            d="M6.24 23.488c-0.032 0.064-0.16 0.096-0.288 0.064-0.128-0.064-0.192-0.16-0.128-0.256 0.032-0.096 0.16-0.096 0.288-0.064 0.128 0.064 0.192 0.16 0.128 0.256v0z"
+          ></path>
+          <path
+            d="M6.912 24.192c-0.064 0.064-0.224 0.032-0.32-0.064s-0.128-0.256-0.032-0.32c0.064-0.064 0.224-0.032 0.32 0.064s0.096 0.256 0.032 0.32v0z"
+          ></path>
+          <path
+            d="M7.52 25.12c-0.096 0.064-0.256 0-0.352-0.128s-0.096-0.32 0-0.384c0.096-0.064 0.256 0 0.352 0.128 0.128 0.128 0.128 0.32 0 0.384v0z"
+          ></path>
+          <path
+            d="M8.384 26.016c-0.096 0.096-0.288 0.064-0.416-0.064s-0.192-0.32-0.096-0.416c0.096-0.096 0.288-0.064 0.416 0.064 0.16 0.128 0.192 0.32 0.096 0.416v0z"
+          ></path>
+          <path
+            d="M9.6 26.528c-0.032 0.128-0.224 0.192-0.384 0.128-0.192-0.064-0.288-0.192-0.256-0.32s0.224-0.192 0.416-0.128c0.128 0.032 0.256 0.192 0.224 0.32v0z"
+          ></path>
+          <path
+            d="M10.912 26.624c0 0.128-0.16 0.256-0.352 0.256s-0.352-0.096-0.352-0.224c0-0.128 0.16-0.256 0.352-0.256 0.192-0.032 0.352 0.096 0.352 0.224v0z"
+          ></path>
+          <path
+            d="M12.128 26.4c0.032 0.128-0.096 0.256-0.288 0.288s-0.352-0.032-0.384-0.16c-0.032-0.128 0.096-0.256 0.288-0.288s0.352 0.032 0.384 0.16v0z"
+          ></path>
+        </symbol>
+
+        <symbol id="icon-location" viewBox="0 0 32 32">
+          <title>location</title>
+          <path
+            d="M16 31.68c-0.352 0-0.672-0.064-1.024-0.16-0.8-0.256-1.44-0.832-1.824-1.6l-6.784-13.632c-1.664-3.36-1.568-7.328 0.32-10.592 1.856-3.2 4.992-5.152 8.608-5.376h1.376c3.648 0.224 6.752 2.176 8.608 5.376 1.888 3.264 2.016 7.232 0.352 10.592l-6.816 13.664c-0.288 0.608-0.8 1.12-1.408 1.408-0.448 0.224-0.928 0.32-1.408 0.32zM15.392 2.368c-2.88 0.192-5.408 1.76-6.912 4.352-1.536 2.688-1.632 5.92-0.288 8.672l6.816 13.632c0.128 0.256 0.352 0.448 0.64 0.544s0.576 0.064 0.832-0.064c0.224-0.096 0.384-0.288 0.48-0.48l6.816-13.664c1.376-2.752 1.248-5.984-0.288-8.672-1.472-2.56-4-4.128-6.88-4.32h-1.216zM16 17.888c-3.264 0-5.92-2.656-5.92-5.92 0-3.232 2.656-5.888 5.92-5.888s5.92 2.656 5.92 5.92c0 3.264-2.656 5.888-5.92 5.888zM16 8.128c-2.144 0-3.872 1.728-3.872 3.872s1.728 3.872 3.872 3.872 3.872-1.728 3.872-3.872c0-2.144-1.76-3.872-3.872-3.872z"
+          ></path>
+          <path
+            d="M16 32c-0.384 0-0.736-0.064-1.12-0.192-0.864-0.288-1.568-0.928-1.984-1.728l-6.784-13.664c-1.728-3.456-1.6-7.52 0.352-10.912 1.888-3.264 5.088-5.28 8.832-5.504h1.376c3.744 0.224 6.976 2.24 8.864 5.536 1.952 3.36 2.080 7.424 0.352 10.912l-6.784 13.632c-0.32 0.672-0.896 1.216-1.568 1.568-0.48 0.224-0.992 0.352-1.536 0.352zM15.36 0.64h-0.064c-3.488 0.224-6.56 2.112-8.32 5.216-1.824 3.168-1.952 7.040-0.32 10.304l6.816 13.632c0.32 0.672 0.928 1.184 1.632 1.44s1.472 0.192 2.176-0.16c0.544-0.288 1.024-0.736 1.28-1.28l6.816-13.632c1.632-3.264 1.504-7.136-0.32-10.304-1.824-3.104-4.864-5.024-8.384-5.216h-1.312zM16 29.952c-0.16 0-0.32-0.032-0.448-0.064-0.352-0.128-0.64-0.384-0.8-0.704l-6.816-13.664c-1.408-2.848-1.312-6.176 0.288-8.96 1.536-2.656 4.16-4.32 7.168-4.512h1.216c3.040 0.192 5.632 1.824 7.2 4.512 1.6 2.752 1.696 6.112 0.288 8.96l-6.848 13.632c-0.128 0.288-0.352 0.512-0.64 0.64-0.192 0.096-0.384 0.16-0.608 0.16zM15.424 2.688c-2.784 0.192-5.216 1.696-6.656 4.192-1.504 2.592-1.6 5.696-0.256 8.352l6.816 13.632c0.096 0.192 0.256 0.32 0.448 0.384s0.416 0.064 0.608-0.032c0.16-0.064 0.288-0.192 0.352-0.352l6.816-13.664c1.312-2.656 1.216-5.792-0.288-8.352-1.472-2.464-3.904-4-6.688-4.16h-1.152zM16 18.208c-3.424 0-6.24-2.784-6.24-6.24 0-3.424 2.816-6.208 6.24-6.208s6.24 2.784 6.24 6.24c0 3.424-2.816 6.208-6.24 6.208zM16 6.4c-3.072 0-5.6 2.496-5.6 5.6 0 3.072 2.528 5.6 5.6 5.6s5.6-2.496 5.6-5.6c0-3.104-2.528-5.6-5.6-5.6zM16 16.16c-2.304 0-4.16-1.888-4.16-4.16s1.888-4.16 4.16-4.16c2.304 0 4.16 1.888 4.16 4.16s-1.856 4.16-4.16 4.16zM16 8.448c-1.952 0-3.552 1.6-3.552 3.552s1.6 3.552 3.552 3.552c1.952 0 3.552-1.6 3.552-3.552s-1.6-3.552-3.552-3.552z"
+          ></path>
+        </symbol>
+
+        <symbol id="icon-twitter" viewBox="0 0 32 32">
+          <title>twitter</title>
+          <path
+            d="M32 7.075c-1.175 0.525-2.444 0.875-3.769 1.031 1.356-0.813 2.394-2.1 2.887-3.631-1.269 0.75-2.675 1.3-4.169 1.594-1.2-1.275-2.906-2.069-4.794-2.069-3.625 0-6.563 2.938-6.563 6.563 0 0.512 0.056 1.012 0.169 1.494-5.456-0.275-10.294-2.888-13.531-6.862-0.563 0.969-0.887 2.1-0.887 3.3 0 2.275 1.156 4.287 2.919 5.463-1.075-0.031-2.087-0.331-2.975-0.819 0 0.025 0 0.056 0 0.081 0 3.181 2.263 5.838 5.269 6.437-0.55 0.15-1.131 0.231-1.731 0.231-0.425 0-0.831-0.044-1.237-0.119 0.838 2.606 3.263 4.506 6.131 4.563-2.25 1.762-5.075 2.813-8.156 2.813-0.531 0-1.050-0.031-1.569-0.094 2.913 1.869 6.362 2.95 10.069 2.95 12.075 0 18.681-10.006 18.681-18.681 0-0.287-0.006-0.569-0.019-0.85 1.281-0.919 2.394-2.075 3.275-3.394z"
+          ></path>
+        </symbol>
+
+        <symbol id="icon-link" viewBox="0 0 32 32">
+          <title>link</title>
+          <path
+            d="M17.984 11.456c-0.704 0.704-0.704 1.856 0 2.56 2.112 2.112 2.112 5.568 0 7.68l-5.12 5.12c-2.048 2.048-5.632 2.048-7.68 0-1.024-1.024-1.6-2.4-1.6-3.84s0.576-2.816 1.6-3.84c0.704-0.704 0.704-1.856 0-2.56s-1.856-0.704-2.56 0c-1.696 1.696-2.624 3.968-2.624 6.368 0 2.432 0.928 4.672 2.656 6.4 1.696 1.696 3.968 2.656 6.4 2.656s4.672-0.928 6.4-2.656l5.12-5.12c3.52-3.52 3.52-9.248 0-12.8-0.736-0.672-1.888-0.672-2.592 0.032z"
+          ></path>
+          <path
+            d="M29.344 2.656c-1.696-1.728-3.968-2.656-6.4-2.656s-4.672 0.928-6.4 2.656l-5.12 5.12c-3.52 3.52-3.52 9.248 0 12.8 0.352 0.352 0.8 0.544 1.28 0.544s0.928-0.192 1.28-0.544c0.704-0.704 0.704-1.856 0-2.56-2.112-2.112-2.112-5.568 0-7.68l5.12-5.12c2.048-2.048 5.632-2.048 7.68 0 1.024 1.024 1.6 2.4 1.6 3.84s-0.576 2.816-1.6 3.84c-0.704 0.704-0.704 1.856 0 2.56s1.856 0.704 2.56 0c1.696-1.696 2.656-3.968 2.656-6.4s-0.928-4.704-2.656-6.4z"
+          ></path>
+        </symbol>
+
+        <symbol id="icon-linkedin" viewBox="0 0 97.75 97.75">
+          <title>linkedin</title>
+          <path
+            d="M48.875,0C21.882,0,0,21.882,0,48.875S21.882,97.75,48.875,97.75S97.75,75.868,97.75,48.875S75.868,0,48.875,0z
+                     M30.562,81.966h-13.74V37.758h13.74V81.966z M23.695,31.715c-4.404,0-7.969-3.57-7.969-7.968c0.001-4.394,3.565-7.964,7.969-7.964
+                    c4.392,0,7.962,3.57,7.962,7.964C31.657,28.146,28.086,31.715,23.695,31.715z M82.023,81.966H68.294V60.467
+                    c0-5.127-0.095-11.721-7.142-11.721c-7.146,0-8.245,5.584-8.245,11.35v21.869H39.179V37.758h13.178v6.041h0.185
+                    c1.835-3.476,6.315-7.14,13-7.14c13.913,0,16.481,9.156,16.481,21.059V81.966z"
+          />
+        </symbol>
+      </defs>
+    </svg>
+  </body>
+</html>

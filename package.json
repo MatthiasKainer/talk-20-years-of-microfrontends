@@ -1,0 +1,16 @@
+{
+  "name": "talk-20-years-of-microfrontends",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "npx serve -p 7331 docs"
+  },
+  "author": "Matthias Kainer",
+  "license": "ISC",
+  "dependencies": {
+    "html-presentations": "^1.0.0",
+    "lit": "^2.0.0-rc.4",
+    "pure-lit": "^1.1.1"
+  }
+}
